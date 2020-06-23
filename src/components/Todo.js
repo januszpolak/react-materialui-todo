@@ -8,9 +8,13 @@ import {
 } from "@material-ui/core";
 import { Check, Delete } from "@material-ui/icons";
 
-const Todo = ({ title, checkTodo, id, isCompleted }) => {
+const Todo = ({ title, checkTodo, id, isCompleted, deleteTodo }) => {
   const markTodo = () => {
     checkTodo(id);
+  };
+
+  const delTodo = () => {
+    deleteTodo(id);
   };
 
   const completedStyle = isCompleted
@@ -30,7 +34,7 @@ const Todo = ({ title, checkTodo, id, isCompleted }) => {
               <IconButton style={{ float: "right" }} onClick={markTodo}>
                 <Check style={{ color: "#00b894" }} />
               </IconButton>
-              <IconButton style={{ float: "right" }}>
+              <IconButton style={{ float: "right" }} onClick={delTodo}>
                 <Delete style={{ color: "#d63031" }} />
               </IconButton>
             </Typography>

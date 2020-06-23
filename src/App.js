@@ -30,10 +30,15 @@ function App() {
       })
     );
   };
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <div className="App" style={styles.div}>
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} checkTodo={checkTodo} />
+      <TodoList todos={todos} checkTodo={checkTodo} deleteTodo={deleteTodo} />
     </div>
   );
 }
