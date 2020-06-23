@@ -12,12 +12,14 @@ function App() {
   };
 
   const addTodo = (text) => {
-    const newTodo = {
-      id: Math.random(),
-      title: text,
-      isCompleted: false,
-    };
-    setTodos([...todos, newTodo]);
+    if (text !== "") {
+      const newTodo = {
+        id: Math.random(),
+        title: text,
+        isCompleted: false,
+      };
+      setTodos([...todos, newTodo]);
+    }
   };
 
   const checkTodo = (id) => {
