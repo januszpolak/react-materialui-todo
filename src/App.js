@@ -3,18 +3,7 @@ import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: "Play game",
-      iscompleted: false,
-    },
-    {
-      id: 2,
-      title: "Go a walk",
-      iscompleted: false,
-    },
-  ]);
+  const [todos, setTodos] = useState([]);
   const styles = {
     div: {
       background: "#dfe6e9",
@@ -24,16 +13,27 @@ function App() {
 
   const addTodo = (text) => {
     const newTodo = {
-      id: text.title,
+      id: Math.random(),
       title: text,
       isCompleted: false,
     };
     setTodos([...todos, newTodo]);
   };
+
+  const checkTodo = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.isCompleted = !todo.isCompleted;
+        }
+        return todo;
+      })
+    );
+  };
   return (
     <div className="App" style={styles.div}>
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} checkTodo={checkTodo} />
     </div>
   );
 }
